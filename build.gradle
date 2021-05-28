@@ -1,0 +1,53 @@
+plugins {
+    id("groovy") 
+    id("com.github.johnrengelman.shadow") version "7.0.0"
+    id("io.micronaut.application") version "1.5.0"
+}
+
+version = "0.1"
+group = "codes.recursive"
+
+repositories {
+    mavenCentral()
+}
+
+micronaut {
+    runtime("netty")
+    testRuntime("spock2")
+    processing {
+        incremental(true)
+        annotations("codes.recursive.*")
+    }
+}
+
+dependencies {
+    implementation("io.micronaut:micronaut-http-client")
+    implementation("io.micronaut:micronaut-runtime")
+    implementation("javax.annotation:javax.annotation-api")
+    runtimeOnly("ch.qos.logback:logback-classic")
+    implementation("io.micronaut:micronaut-validation")
+
+    implementation("io.micronaut.jms:micronaut-jms-core")
+    implementation("javax.transaction:jta:1.1")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-sdk")
+    implementation("io.micronaut.oraclecloud:micronaut-oraclecloud-atp:1.2.1")
+    implementation(enforcedPlatform("com.oracle.database.jdbc:ojdbc-bom:21.1.0.0"))
+    implementation("com.oracle.database.jdbc:ojdbc8")
+    implementation("io.micronaut.sql:micronaut-jdbc-ucp")
+    implementation("com.oracle.database.messaging:aqapi:19.3.0.0")
+}
+
+tasks.withType(JavaExec) {
+    systemProperties += System.properties
+}
+
+application {
+    mainClass.set("codes.recursive.Application")
+}
+java {
+    sourceCompatibility = JavaVersion.toVersion("11")
+    targetCompatibility = JavaVersion.toVersion("11")
+}
+
+
+

@@ -1,0 +1,18 @@
+micronaut:
+  application:
+    name: mnAqDemo
+oci:
+  config:
+    profile: DEFAULT
+datasources:
+  default:
+    ocid: ocid1.autonomousdatabase.oc1.phx.abyhqljrp22gdi2vqky6qn3z7s2gi7yklxa2t3yhvqlrs7h6ak665uvxctia
+    connectionFactoryClassName: oracle.jdbc.pool.OracleDataSource
+    walletPassword:
+    username:
+    password:
+oracle:
+  jms:
+    traceLevel: 6
+    minSleepTime: 100
+    maxSleepTime: 5000
