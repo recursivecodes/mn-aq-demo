@@ -1,7 +1,6 @@
 package codes.recursive;
 
 import io.micronaut.runtime.Micronaut;
-import oracle.jms.AQjmsOracleDebug;
 
 public class Application {
 
